@@ -1,4 +1,4 @@
-# mybot
+# A tribute for n3aiop
 
 Testing purpose bot.
 
