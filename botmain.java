@@ -1,32 +1,35 @@
 package Bot;
-import net.dv8tion.jda.core.AccountType;
-import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.OnlineStatus;
-import net.dv8tion.jda.core.entities.Game;
+import kotlin.random.Random;
+import net.dv8tion.jda.api.OnlineStatus;
+import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.sharding.DefaultShardManager;
+import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
+import net.dv8tion.jda.api.sharding.ShardManager;
 
-public class BotMain{
-
-    public static String PFX = "-";
-
-    public static void main(String[]args) throws Exception{
-        try {
-            JDA api = new JDABuilder(AccountType.BOT).setToken("NTM1Mjg3ODUxMzE5OTUxMzk5.DyHdLQ.VTuNf8g5kbdnLg0sF9W7XJ6xd14").build();
-            api.addEventListener(new Bot.MyEventListener());
-            api.addEventListener(new InviteCommand());
-            api.addEventListener(new Mj());
-            api.addEventListener(new ML());
-            api.getPresence().setStatus(OnlineStatus.DO_NOT_DISTURB);
-            api.getPresence().setGame(Game.listening("Homework Radio on YT"));
+import javax.security.auth.login.LoginException;
+import java.util.Locale;
 
 
+public class BotMain {
 
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
-
+    private final ShardManager SM;
+    public BotMain() throws LoginException{
+        DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault("NTM1Mjg3ODUxMzE5OTUxMzk5.GbR6w1.9TJ0kMdjL6BqMe16LaGNg0S4uQEkp5WZtsuKpI");
+        builder.setStatus(OnlineStatus.ONLINE);
+        builder.setActivity(Activity.watching("Femboys dance"));
+        SM = builder.build();
 
     }
 
+    public ShardManager getSM() {
+        return SM;
+    }
 
+    public static void main(String[] args) {
+        try {
+            BotMain bot = new BotMain();
+        } catch (LoginException e) {
+
+        }
+    }
 }
