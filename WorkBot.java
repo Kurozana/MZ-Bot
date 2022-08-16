@@ -1,6 +1,7 @@
 package Bot;
 import io.github.cdimascio.dotenv.Dotenv;
 import kotlin.random.Random;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.hooks.EventListener;
@@ -14,6 +15,7 @@ import java.util.Locale;
 
 
 public class BotMain {
+    // Defining finals + calling config.
     private final Dotenv config;
     private final ShardManager SM;
     public BotMain() throws LoginException{
@@ -25,12 +27,13 @@ public class BotMain {
         builder.setStatus(OnlineStatus.ONLINE);
         builder.setActivity(Activity.watching("Femboys dance"));
         builder.enableIntents(GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MESSAGE_TYPING, GatewayIntent.GUILD_MEMBERS);
-
         SM = builder.build();
         SM.addEventListener(new Actions());
+        SM.addEventListener(new MJ());
+        SM.addEventListener(new ML());
 
     }
-
+  // Return config and ShardManager
     public Dotenv getConfig(){
         return config;
     }
