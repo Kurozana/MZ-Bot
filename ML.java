@@ -1,33 +1,31 @@
 package Bot;
 
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.events.guild.member.GuildMemberLeaveEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
-import java.awt.*;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberRemoveEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Random;
 
 public class ML extends ListenerAdapter {
-    String[] msgs = {
-            "[m] left us cause big gay.",
-            "I. AM. [m]. THE SERVER LEAAAAAAAAVER",
-            "Sometimes [m] can be sensitive",
-            "[m] plays TERA a lot so he's a bit autistic"
-    };
+       String[] msgs = {
+               "[member] left, thank god lmao ",
+               "W H :OMEGALUL: [member]",
+               "[member] killed himself",
+               "[member] couldn't handle Waffie much more..",
+               "راح نشتاق لك يا [member] بس موب مرااااّ~",
 
-
-
-
-    public void onGuildMemberLeave(GuildMemberLeaveEvent e) throws NullPointerException{
-     Random r = new Random();
-     int n = r.nextInt(msgs.length);
-     EmbedBuilder leave = new EmbedBuilder();
-     leave.setDescription(msgs[n].replace("[m]", e.getMember().getAsMention()));
-     leave.setColor(Color.BLACK);
-    try{
-        e.getGuild().getDefaultChannel().sendMessage(leave.build()).queue();
-    }
-     catch(NullPointerException ex){
-        ex.printStackTrace();
-     }
+       };
+    @Override
+    public void onGuildMemberRemove(@NotNull GuildMemberRemoveEvent event) throws NullPointerException {
+      Random rand = new Random();
+      int num = rand.nextInt(msgs.length);
+      EmbedBuilder leave = new EmbedBuilder();
+         leave.setDescription(msgs[num].replace("[member]", event.getMember().getUser().getAsTag()));
+         try{
+             event.getGuild().getDefaultChannel().asTextChannel().sendMessageEmbeds(leave.build()).queue();
+         }catch (NullPointerException ex){
+             ex.printStackTrace();
+         }
     }
 }
