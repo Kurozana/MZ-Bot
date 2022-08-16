@@ -12,24 +12,27 @@ public class Actions extends ListenerAdapter {
 
 
 
-    @Override
-    public void onGuildMemberJoin(@NotNull GuildMemberJoinEvent event) {
-        String User = event.getUser().getAsMention();
-        event.getGuild().getDefaultChannel().asTextChannel().sendMessage("Welcome" + User + "! You are literally a test subject for me frfr ongod").queue();
-
-
-
-    }
-
 
     @Override
     public void onMessageReceived(@NotNull MessageReceivedEvent event) {
+
+        String [] args = event.getMessage().getContentRaw().split("\\s+");
         String User = event.getAuthor().getAsMention();
         String msg = event.getMessage().getContentRaw().toLowerCase();
+         if(args[0].equalsIgnoreCase(BotMain.Prefix + "UA")){
+             String ua = event.getMessage().getMentions().getUsers().get(0).getAvatarUrl();
+             String usr = event.getMessage().getMentions().getUsers().get(0).getAsMention();
+             if (ua == null){
+                 event.getChannel().sendMessage(usr + " Has the default discord icon").queue();
+             }else{
+                 event.getChannel().sendMessage(ua).queue();
+             }
+         }
         if(msg.contains("n3ia")){
             event.getGuild().getDefaultChannel().asTextChannel().sendMessage("just another person from this lovely world " + User + " Don't you agree uwu?").queue();
 
         }
 
     }
+
 }
