@@ -27,7 +27,7 @@ public class BotMain {
         // Building the ShardManager
         DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(token);
         builder.setStatus(OnlineStatus.ONLINE);
-        builder.setActivity(Activity.watching("Femboys dance"));
+        builder.setActivity(Activity.watching("yuumi cosplay videos :3~"));
         builder.enableIntents(GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MESSAGE_TYPING, GatewayIntent.GUILD_MEMBERS);
 
         SM = builder.build();
