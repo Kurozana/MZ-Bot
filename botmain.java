@@ -1,44 +1,44 @@
 package Bot;
-import Bot.Listeners.EventListener;
 import io.github.cdimascio.dotenv.Dotenv;
+import kotlin.random.Random;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.hooks.EventListener;
 import net.dv8tion.jda.api.requests.GatewayIntent;
+import net.dv8tion.jda.api.sharding.DefaultShardManager;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.api.sharding.ShardManager;
 import javax.security.auth.login.LoginException;
-
-import net.dv8tion.jda.api.utils.ChunkingFilter;
-import net.dv8tion.jda.api.utils.MemberCachePolicy;
-import net.dv8tion.jda.api.utils.cache.CacheFlag;
+import java.util.Locale;
 
 
 public class BotMain {
+    // Defining finals + calling config.
+    public static String Prefix = "-";
     private final Dotenv config;
     private final ShardManager SM;
-
     public BotMain() throws LoginException{
-        config = Dotenv.configure().load();
-        String token =  config.get("TOKEN");
+    config = Dotenv.configure().load();
+    String token =  config.get("TOKEN");
+    String Prefix = config.get("PREFIX");
 
-        // Builder & Shard Manager
+
+        // Building the ShardManager || AudioManager
+
         DefaultShardManagerBuilder builder = DefaultShardManagerBuilder.createDefault(token);
-        builder.setStatus(OnlineStatus.DO_NOT_DISTURB);
-        builder.setActivity(Activity.watching("Femboys dance"));
+        builder.setStatus(OnlineStatus.ONLINE);
+        builder.setActivity(Activity.watching("yuumi cosplay videos :3~"));
+        builder.enableIntents(GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MESSAGE_TYPING, GatewayIntent.GUILD_MEMBERS);
+// Building + Listening . . .
         SM = builder.build();
-        builder.enableIntents(GatewayIntent.MESSAGE_CONTENT);
-        builder.setMemberCachePolicy(MemberCachePolicy.ALL);
-        builder.setChunkingFilter(ChunkingFilter.ALL);
-        builder.enableCache(CacheFlag.ACTIVITY, CacheFlag.MEMBER_OVERRIDES, CacheFlag.ONLINE_STATUS);
-
-
-
-
-        // Register Listeners here :)
-        SM.addEventListener(new EventListener());
+        SM.addEventListener(new Actions());
+        SM.addEventListener(new MJ());
+        SM.addEventListener(new ML());
+        SM.addEventListener(new MKick());
 
     }
-
+  // Return config and ShardManager
     public Dotenv getConfig(){
         return config;
     }
