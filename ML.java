@@ -5,6 +5,8 @@ import net.dv8tion.jda.api.events.guild.member.GuildMemberRemoveEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 
+import java.awt.*;
+import java.time.Instant;
 import java.util.Objects;
 import java.util.Random;
 
@@ -22,6 +24,10 @@ public class ML extends ListenerAdapter {
       Random rand = new Random();
       int num = rand.nextInt(msgs.length);
       EmbedBuilder leave = new EmbedBuilder();
+        leave.setColor(new Color(92, 220, 216));
+        leave.setFooter("About time, damn.");
+        leave.setThumbnail(event.getUser().getAvatarUrl());
+        leave.setTimestamp(Instant.now());
       leave.setDescription(msgs[num].replace("[member]", event.getUser().getAsMention()));
          try{
              event.getGuild().getDefaultChannel().asTextChannel().sendMessageEmbeds(leave.build()).queue();
