@@ -4,13 +4,16 @@ Developed for fun.
 
 - Next steps:
 
-* Commands, command
-* Embed every command
-* Fix any caught exception
-* Audio Handler
-* MP3 files storage
+* Commands, command // Done
+* Embed every command // Done
+* Fix any caught exception // Done
+
+
+Audio:
+* Audio Handler // TBA
+* MP3 files storage // TBA
 * Audio Stream (Local or hosted?)
 
 
 Current Issues:
-* Unable to implement Lavalink/Lavaplayer library through maven --> Dependcies issue
+* Unable to implement Lavalink/Lavaplayer library through Maven
