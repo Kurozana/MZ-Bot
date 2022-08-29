@@ -43,9 +43,9 @@ public class Actions extends ListenerAdapter {
              if(args[0].equalsIgnoreCase(BotMain.Prefix + "Info")) {
                      EmbedBuilder Em = new EmbedBuilder();
                      Em.setTitle("mom_rage");
-                     Em.setDescription("A side project for fun, dedicated to my boy n3ia");
-                     Em.addField("Developer", "This has been developed by Ibrahim as a side project", false);
-                     Em.addField("Which API?", "This bot utilizes JDA API by Minn", false);
+                     Em.setDescription("A semi-private bot for Mature Zone DS.");
+                     Em.addField("Developer", "This has been developed by Ibrahim.", false);
+                     Em.addField("Which API?", "This bot utilizes JDA API by JDA team;", false);
                      Em.setColor(Color.PINK);
                      Em.setFooter(" > " + formatter.format(date), event.getGuild().getIconUrl());
                      event.getChannel().asTextChannel().sendMessageEmbeds(Em.build()).queue();
@@ -87,9 +87,9 @@ public class Actions extends ListenerAdapter {
                      }
                  }
              }
-        if(msg.contains("n3ia")){
+      /*  if(msg.contains("n3ia")){
             event.getGuild().getDefaultChannel().asTextChannel().sendMessage("just another person from this lovely world " + User + " Don't you agree uwu?").queue();
-         }
+         }*/
 
 
         }
