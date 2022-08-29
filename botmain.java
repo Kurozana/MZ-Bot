@@ -21,7 +21,6 @@ public class BotMain {
     public BotMain() throws LoginException{
     config = Dotenv.configure().load();
     String token =  config.get("TOKEN");
-    String Prefix = config.get("PREFIX");
 
 
         // Building the ShardManager || AudioManager
@@ -36,6 +35,9 @@ public class BotMain {
         SM.addEventListener(new MJ());
         SM.addEventListener(new ML());
         SM.addEventListener(new MKick());
+        SM.addEventListener(new invite());
+        SM.addEventListener(new quotes());
+        SM.addEventListener(new Commands());
 
     }
   // Return config and ShardManager
