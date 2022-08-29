@@ -1,20 +1,22 @@
 package Bot;
-import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
-public class InviteCommand extends ListenerAdapter {
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import org.jetbrains.annotations.NotNull;
 
-    public void onGuildMessageReceived(GuildMessageReceivedEvent e){
+public class invite extends ListenerAdapter {
+
+
+    @Override
+    public void onMessageReceived(@NotNull MessageReceivedEvent event) {
         int timeLimit = 3600;
-        String[] msg = e.getMessage().getContentRaw().split(" ") ;
-        if (msg[0].equalsIgnoreCase(BotMain.PFX + "Invite") && msg.length == 1) {
-            e.getChannel().sendMessage("Type [-Invite create] to create an invite!").queue();
-        }else if(msg.length >= 2 && msg[0].equalsIgnoreCase(BotMain.PFX + "Invite") && msg[1].equalsIgnoreCase("create")){
-            e.getChannel().sendMessage("Hey " + e.getAuthor().getName() + " your invite will be ready in a second!").queue();
-            e.getChannel().sendMessage("Your invite is ready ! --> "+ e.getChannel().createInvite().setMaxAge(timeLimit).complete().getURL()).queue();
-            e.getChannel().sendMessage("By the way your invite expires in " + timeLimit + " seconds! (1 hour)").queue();
-        }
+        String[] msg = event.getMessage().getContentRaw().split(" ");
+        if (msg[0].equalsIgnoreCase(BotMain.Prefix + "Invite") && msg.length == 1) {
+            event.getChannel().sendMessage("Type [-invite create] to create an invite").queue();
 
+        } else if (msg.length >= 2 && msg[0].equalsIgnoreCase(BotMain.Prefix + "Invite") && msg[1].equalsIgnoreCase( "create")) {
+            event.getChannel().sendMessage("Your invite --- > " + event.getGuild().getDefaultChannel().createInvite().setMaxAge(timeLimit).complete().getUrl()).queue();
+        }
     }
 
 }
