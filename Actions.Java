@@ -6,8 +6,10 @@ import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.requests.RestAction;
 import org.jetbrains.annotations.NotNull;
 import java.awt.*;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -42,8 +44,8 @@ public class Actions extends ListenerAdapter {
 
              if(args[0].equalsIgnoreCase(BotMain.Prefix + "Info")) {
                      EmbedBuilder Em = new EmbedBuilder();
-                     Em.setTitle("mom_rage");
-                     Em.setDescription("A semi-private bot for Mature Zone DS.");
+                     Em.setTitle("صفوان");
+                     Em.setDescription("for funzies");
                      Em.addField("Developer", "This has been developed by Ibrahim.", false);
                      Em.addField("Which API?", "This bot utilizes JDA API by JDA team;", false);
                      Em.setColor(Color.PINK);
@@ -86,6 +88,10 @@ public class Actions extends ListenerAdapter {
                          }
                      }
                  }
+             }
+
+             if(args[0].equalsIgnoreCase(BotMain.Prefix + "testfile")){
+                 event.getChannel().sendMessage("testing").addFile(new File("C:\\Users\\ialboiez\\OneDrive - Bahri\\Desktop")).queue();
              }
       /*  if(msg.contains("n3ia")){
             event.getGuild().getDefaultChannel().asTextChannel().sendMessage("just another person from this lovely world " + User + " Don't you agree uwu?").queue();
