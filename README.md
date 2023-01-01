@@ -1,12 +1,5 @@
-# Dedicated for n3ia
+# Developed for both fun and education purposes.
 
-Developed for fun.
-
-- Next steps:
-
-* Commands, command // Done
-* Embed every command // Done
-* Fix any caught exception // Done
 
 
 Audio:
