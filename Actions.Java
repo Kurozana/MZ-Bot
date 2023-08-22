@@ -44,10 +44,10 @@ public class Actions extends ListenerAdapter {
 
              if(args[0].equalsIgnoreCase(BotMain.Prefix + "Info")) {
                      EmbedBuilder Em = new EmbedBuilder();
-                     Em.setTitle("صفوان");
-                     Em.setDescription("for funzies");
-                     Em.addField("Developer", "This has been developed by Ibrahim.", false);
-                     Em.addField("Which API?", "This bot utilizes JDA API by JDA team;", false);
+                     Em.setTitle("Info");
+                     Em.setDescription("Discord bot");
+                     Em.addField("Developer", "magic man Ibrahim", false);
+                     Em.addField("API", "This bot utilizes JDA API by JDA team;", false);
                      Em.setColor(Color.PINK);
                      Em.setFooter(" > " + formatter.format(date), event.getGuild().getIconUrl());
                      event.getChannel().asTextChannel().sendMessageEmbeds(Em.build()).queue();
@@ -73,7 +73,7 @@ public class Actions extends ListenerAdapter {
                          EmbedBuilder success = new EmbedBuilder();
                          success.setTitle("Successfully deleted " + args[1] + " messages");
                          success.setColor(Color.GREEN);
-                         success.setDescription(sender + " admitted to being a femboy so he had to delete " + args[1] + " images of him dressing as a femboy LMFAOOO, EXPOSED BABY.");
+                         success.setDescription(sender + " has deleted" + args[1] + "messages");
                          event.getChannel().asTextChannel().sendMessageEmbeds(success.build()).queue();
                          success.clear();
 
@@ -90,9 +90,27 @@ public class Actions extends ListenerAdapter {
                  }
              }
 
-             if(args[0].equalsIgnoreCase(BotMain.Prefix + "testfile")){
-                 event.getChannel().sendMessage("testing").addFile(new File("C:\\Users\\ialboiez\\OneDrive - Bahri\\Desktop")).queue();
+             if(args[0].equalsIgnoreCase(BotMain.Prefix + "empty")){
+                 EmbedBuilder Cache = new EmbedBuilder();
+                 Cache.setColor(Color.GREEN);
+                 Cache.setTitle("Emptying Cache");
+                 Cache.setDescription("Emptied successfuly");
+                 event.getChannel().sendMessageEmbeds(Cache.build()).queue();
              }
+             if(args[0].equalsIgnoreCase(BotMain.Prefix + "N3aio")){
+                 EmbedBuilder Naia = new EmbedBuilder();
+                 Naia.setColor(Color.BLACK);
+                 Naia.setTitle("Naia's tribute");
+                 Naia.setDescription("I don't know im trying stuff");
+                 event.getChannel().sendMessageEmbeds(Naia.build()).queue();
+
+
+             }
+        if(args[0].equalsIgnoreCase(BotMain.Prefix + "Deploy")){
+            event.getChannel().sendMessage("Repo Pull submitted").queue();
+
+
+        }
       /*  if(msg.contains("n3ia")){
             event.getGuild().getDefaultChannel().asTextChannel().sendMessage("just another person from this lovely world " + User + " Don't you agree uwu?").queue();
          }*/
